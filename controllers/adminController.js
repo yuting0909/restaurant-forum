@@ -53,6 +53,14 @@ const adminController = {
         res.redirect('/admin/restaurants')
       })
     })
+  },
+  deleteRestaurant(req, res) {
+    return Restaurant.findByPk(req.params.id).then(restaurant => {
+      restaurant.destroy().then(() => {
+        req.flash('success_messages', '成功刪除')
+        res.redirect('/admin/restaurants')
+      })
+    })
   }
 }
 
