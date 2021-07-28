@@ -9,6 +9,8 @@ const passport = require('./config/passport')
 const db = require('./models')
 const port = 3000
 
+app.use('/upload', express.static(__dirname + '/upload'))
+
 app.engine('hbs', handlebars({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({extended: true}))
