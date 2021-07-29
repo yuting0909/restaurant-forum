@@ -9,6 +9,10 @@ const passport = require('./config/passport')
 const db = require('./models')
 const port = process.env.PORT || 3000
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 app.use('/upload', express.static(__dirname + '/upload'))
 
 app.engine('hbs', handlebars({ defaultLayout: 'main', extname: '.hbs' }))
