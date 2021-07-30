@@ -15,7 +15,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use('/upload', express.static(__dirname + '/upload'))
 
-app.engine('hbs', handlebars({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine('hbs', handlebars({ 
+  defaultLayout: 'main', 
+  extname: '.hbs',
+  helpers: require('./config/handlebars-helpers')
+}))
 app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }))
