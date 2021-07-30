@@ -26,7 +26,10 @@ const categoryController = {
     } 
     return Category.create({
       name: req.body.name
-    }).then(() => res.redirect('/admin/categories'))
+    }).then((category) => {
+      req.flash('success_messages', `新增${category.name}`)
+      res.redirect('/admin/categories')
+    })
   },
   updateCategory(req, res) {
     if (!req.body.name) {
@@ -34,7 +37,16 @@ const categoryController = {
       return res.redirect('back')
     } 
     return Category.findByPk(req.params.id).then(category => {
-      category.update(req.body).then(() => {
+      category.update(req.body).then((category) => {
+        req.flash('success_messages', `更新${category.name}`)
+        res.redirect('/admin/categories')
+      })
+    })
+  },
+  deleteCategory(req, res) {
+    return Category.findByPk(req.params.id).then(category => {
+      category.destroy().then(category => {
+        req.flash('success_messages', `已刪除${category.name}`)
         res.redirect('/admin/categories')
       })
     })
