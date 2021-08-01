@@ -19,6 +19,15 @@ const adminController = {
       return res.json({restaurant})
     })
   },
+  deleteRestaurant: (req, res) => {
+    return Restaurant.findByPk(req.params.id)
+      .then((restaurant) => {
+        restaurant.destroy()
+          .then((restaurant) => {
+            res.json({ status: 'success', message: '' })
+          })
+      })
+  },
   getCategories(req, res) {
     return Category.findAll({ 
       raw: true,

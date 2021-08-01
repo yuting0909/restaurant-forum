@@ -5,6 +5,7 @@ const adminController = require('../controllers/api/adminController.js')
 
 router.get('/admin/restaurants', adminController.getRestaurants)
 router.get('/admin/restaurants/:id', adminController.getRestaurant)
+router.delete('/admin/restaurants/:id', adminController.deleteRestaurant)
 router.get('/admin/categories', adminController.getCategories)
 router.get('/admin/categories/:id', adminController.getCategories)
 
