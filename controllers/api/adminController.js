@@ -19,6 +19,20 @@ const adminController = {
       return res.json({restaurant})
     })
   },
+  getCategories(req, res) {
+    return Category.findAll({ 
+      raw: true,
+      nest: true
+    }).then(categories => {
+      if (req.params.id) {
+        return Category.findByPk(req.params.id)
+          .then(category => {
+            return res.json({categories, category})
+          })
+      } 
+      return res.json({categories})
+    })
+  }
 }
 
 module.exports = adminController
