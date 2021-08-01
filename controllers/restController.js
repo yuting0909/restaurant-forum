@@ -3,7 +3,7 @@ const Restaurant = db.Restaurant
 const Category = db.Category
 const Comment = db.Comment
 const User = db.User
-const pageLimit = 10
+const pageLimit = 9
 
 const restController = {
   getRestaurants(req, res) {
