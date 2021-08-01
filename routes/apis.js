@@ -25,5 +25,6 @@ router.get('/admin/categories', authenticated, authenticatedAdmin, adminControll
 router.get('/admin/categories/:id', authenticated, authenticatedAdmin, adminController.getCategories)
 
 router.post('/signin', userController.signIn)
+router.post('/signup', userController.signUp)
 
 module.exports = router
