@@ -62,7 +62,6 @@ const adminController = {
         res.redirect('/admin/restaurants')
       })
     }
-    
   },
   getRestaurant(req, res) {
     return Restaurant.findByPk(req.params.id, {include: [Category]}).then(restaurant => {
