@@ -45,9 +45,6 @@ const jwt = require('jsonwebtoken')
 const passportJWT = require('passport-jwt')
 const ExtractJwt = passportJWT.ExtractJwt
 const JwtStrategy = passportJWT.Strategy
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
 
 let jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
